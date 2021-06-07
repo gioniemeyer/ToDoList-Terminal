@@ -1,0 +1,18 @@
+{
+  "name": "node-example",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "jogo.js",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
