@@ -13,6 +13,7 @@ function ToDo() {
     }
     
     if(index === 1) {
+        if(tasks.length === 0) ToDo();
         for(let i = 0; i < tasks.length; i++) {
             console.log(tasks[i].done ? `🟢 ${tasks[i].text}` : `🔴 ${tasks[i].text}`);
         }
@@ -33,12 +34,8 @@ function ToDo() {
         ToDo();
     }
 
-    if(index === 3) { ending() }
+    if(index === -1) return'';
 
 }
 
 ToDo();
-
-function ending() {
-    return('');
-}
