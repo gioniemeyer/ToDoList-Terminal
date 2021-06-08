@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import readlineSync from 'readline-sync';
 
 const tasks = [];
@@ -22,7 +23,10 @@ function ToDo() {
         const indexList = readlineSync.keyInSelect(arrayTasks, 'What do you want to check/uncheck? ');
             if (indexList !== -1) {
             tasks[indexList].done = !tasks[indexList].done;
-            } 
+            }
+            console.log('===============')
+            for(let i = 0; i < arrayTasks.length; i++) console.log(chalk.white(arrayTasks[i]))
+            console.log('===============')             
         ToDo();
     }
     
@@ -34,6 +38,9 @@ function ToDo() {
         if (indexList !== -1) {
         tasks.splice(indexList, 1);
         }
+        console.log('===============')
+        for(let i = 0; i < arrayTasks.length; i++) console.log(chalk.white(arrayTasks[i]))
+        console.log('===============')    
         ToDo();
     }
 
