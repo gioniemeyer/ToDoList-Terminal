@@ -17,7 +17,7 @@ function ToDo() {
     if(index === 1) {
         if(tasks.length === 0) ToDo();
         for(let i = 0; i < tasks.length; i++) {
-            console.log(tasks[i].done ? `🟢 ${tasks[i].text}` : `🔴 ${tasks[i].text}`);
+            (tasks[i].done ? arrayTasks[i] = `🟢 ${tasks[i].text}` : arrayTasks[i] = `🔴 ${tasks[i].text}`);
         }
         const indexList = readlineSync.keyInSelect(arrayTasks, 'What do you want to check/uncheck? ');
             if (indexList !== -1) {
@@ -28,7 +28,7 @@ function ToDo() {
     
     if(index === 2) {
         for(let i = 0; i < tasks.length; i++) {
-            console.log(tasks[i].done ? `🟢 ${tasks[i].text}` : `🔴 ${tasks[i].text}`);
+            (tasks[i].done ? arrayTasks[i] = `🟢 ${tasks[i].text}` : arrayTasks[i] = `🔴 ${tasks[i].text}`);
         }
         const indexList = readlineSync.keyInSelect(arrayTasks, 'What do you want to remove? ');
         if (indexList !== -1) {
