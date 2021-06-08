@@ -5,28 +5,40 @@ const tasks = [];
 function ToDo() {
     const options = ['add', 'list', 'remove'];
     let index = readlineSync.keyInSelect(options, 'Type your command ');
-
-while(index !== 3) {
    
     if (index === 0) {
         const item = readlineSync.question('What do you want to do? ');
-        tasks.push(`🔴 ${item}`);
-    } 
+        tasks.push({text: item, done: false});
+        ToDo();
+    }
+    
     if(index === 1) {
         for(let i = 0; i < tasks.length; i++) {
+            console.log(tasks[i].done ? `🟢 ${tasks[i].text}` : `🔴 ${tasks[i].text}`);
         }
         const indexList = readlineSync.keyInSelect(tasks, 'What do you want to check/uncheck? ');
-        const selected = tasks[indexList];
-        tasks.splice(0, indexList, `🟢 ${selected}`)
-        for(let i = 0; i < tasks.length; i++) {
-        }
+            if (indexList !== 0) {
+            tasks[indexList].done = !tasks[indexList].done;
+            } 
+        ToDo();
     }
+    
     if(index === 2) {
-        const indexList = readlineSync.keyInSelect(tasks, 'What do you want to check/uncheck? ');
-        tasks.splice(indexList,1);
+        for(let i = 0; i < tasks.length; i++) {
+            console.log(tasks[i].done ? `🟢 ${tasks[i].text}` : `🔴 ${tasks[i].text}`);
+        }
+        const indexList = readlineSync.keyInSelect(tasks, 'What do you want to remove? ');
+
+        tasks.splice(indexList, 1);
+        ToDo();
     }
-    index = readlineSync.keyInSelect(options, 'Type your command ');
 
-}}
+    if(index === 3) { ending() }
 
-ToDo()
+}
+
+ToDo();
+
+function ending() {
+    return('');
+}
