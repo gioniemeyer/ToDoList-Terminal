@@ -1,6 +1,7 @@
 import readlineSync from 'readline-sync';
 
 const tasks = [];
+let arrayTasks =[];
 
 function ToDo() {
     const options = ['add', 'list', 'remove'];
@@ -9,6 +10,7 @@ function ToDo() {
     if (index === 0) {
         const item = readlineSync.question('What do you want to do? ');
         tasks.push({text: item, done: false});
+        arrayTasks = tasks.map(i => i.text);
         ToDo();
     }
     
@@ -17,8 +19,8 @@ function ToDo() {
         for(let i = 0; i < tasks.length; i++) {
             console.log(tasks[i].done ? `🟢 ${tasks[i].text}` : `🔴 ${tasks[i].text}`);
         }
-        const indexList = readlineSync.keyInSelect(tasks, 'What do you want to check/uncheck? ');
-            if (indexList !== 0) {
+        const indexList = readlineSync.keyInSelect(arrayTasks, 'What do you want to check/uncheck? ');
+            if (indexList !== -1) {
             tasks[indexList].done = !tasks[indexList].done;
             } 
         ToDo();
@@ -28,7 +30,7 @@ function ToDo() {
         for(let i = 0; i < tasks.length; i++) {
             console.log(tasks[i].done ? `🟢 ${tasks[i].text}` : `🔴 ${tasks[i].text}`);
         }
-        const indexList = readlineSync.keyInSelect(tasks, 'What do you want to remove? ');
+        const indexList = readlineSync.keyInSelect(arrayTasks, 'What do you want to remove? ');
 
         tasks.splice(indexList, 1);
         ToDo();
