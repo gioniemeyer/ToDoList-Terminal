@@ -31,8 +31,9 @@ function ToDo() {
             console.log(tasks[i].done ? `🟢 ${tasks[i].text}` : `🔴 ${tasks[i].text}`);
         }
         const indexList = readlineSync.keyInSelect(arrayTasks, 'What do you want to remove? ');
-
+        if (indexList !== -1) {
         tasks.splice(indexList, 1);
+        }
         ToDo();
     }
 
